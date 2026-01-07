@@ -682,8 +682,11 @@ if __name__ == '__main__':
     initialize_system()
     
     # Run Flask application
+    import platform
+    # Use 127.0.0.1 on Windows, 0.0.0.0 on Linux/Mac
+    host = '127.0.0.1' if platform.system() == 'Windows' else '0.0.0.0'
     app.run(
-        host='0.0.0.0',
+        host=host,
         port=5000,
         debug=True,
         threaded=True
