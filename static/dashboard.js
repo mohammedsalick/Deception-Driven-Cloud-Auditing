@@ -140,7 +140,8 @@ class HoneyTokenDashboard {
         const statusIndicator = document.getElementById('statusIndicator');
         const statusText = document.getElementById('statusText');
         
-        statusIndicator.className = `status-indicator ${data.status.toLowerCase().replace('_', '-')}`;
+        const statusClass = data.status.toLowerCase().replace('_', '-');
+        statusIndicator.className = `status-indicator ${statusClass}`;
         statusText.textContent = data.status;
 
         // Update status details
