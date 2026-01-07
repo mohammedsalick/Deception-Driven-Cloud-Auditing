@@ -1,0 +1,27 @@
+# Web Framework
+Flask==2.3.3
+Werkzeug==2.3.7
+
+# File System Monitoring
+watchdog==3.0.0
+
+# System Information
+psutil==5.9.6
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# JSON Handling (built-in, but listed for clarity)
+# json - built-in Python module
+
+# Date/Time Handling (built-in, but listed for clarity)  
+# datetime - built-in Python module
+
+# Operating System Interface (built-in, but listed for clarity)
+# os - built-in Python module
+
+# System-specific parameters (built-in, but listed for clarity)
+# sys - built-in Python module
+
+# UUID Generation (built-in, but listed for clarity)
+# uuid - built-in Python module

@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/*.json
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+honey_tokens/*.txt
+honey_tokens/*.json
+honey_tokens/*.sql
+honey_tokens/*.env
+honey_tokens/*.pem
+honey_tokens/*.key
+
+# Keep directory structure but ignore content
+!honey_tokens/.gitkeep
+
+# Test files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Deployment
+*.pem
+*.key
+*.p12
+*.pfx
+

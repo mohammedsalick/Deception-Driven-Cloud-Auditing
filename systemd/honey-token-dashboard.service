@@ -1,0 +1,46 @@
+[Unit]
+Description=Honey Token Web Dashboard
+Documentation=https://github.com/your-repo/honey-token-auditing
+After=network.target honey-token-monitor.service
+Wants=network.target
+Requires=honey-token-monitor.service
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/honey-token-auditing
+Environment=PATH=/home/ubuntu/honey-token-auditing/venv/bin
+Environment=PYTHONPATH=/home/ubuntu/honey-token-auditing
+Environment=FLASK_ENV=production
+Environment=FLASK_PORT=5000
+ExecStart=/home/ubuntu/honey-token-auditing/venv/bin/python app.py
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=10
+TimeoutStartSec=30
+TimeoutStopSec=30
+
+# Output to journald
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=honey-token-dashboard
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/home/ubuntu/honey-token-auditing
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
+RestrictNamespaces=true
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=4096
+
+[Install]
+WantedBy=multi-user.target

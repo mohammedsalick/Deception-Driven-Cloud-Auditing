@@ -1,0 +1,43 @@
+[Unit]
+Description=Honey Token Monitoring Service
+Documentation=https://github.com/your-repo/honey-token-auditing
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/honey-token-auditing
+Environment=PATH=/home/ubuntu/honey-token-auditing/venv/bin
+Environment=PYTHONPATH=/home/ubuntu/honey-token-auditing
+ExecStart=/home/ubuntu/honey-token-auditing/venv/bin/python monitor_service.py
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=10
+TimeoutStartSec=30
+TimeoutStopSec=30
+
+# Output to journald
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=honey-token-monitor
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/home/ubuntu/honey-token-auditing
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictRealtime=true
+RestrictNamespaces=true
+
+# Resource limits
+LimitNOFILE=65536
+LimitNPROC=4096
+
+[Install]
+WantedBy=multi-user.target
